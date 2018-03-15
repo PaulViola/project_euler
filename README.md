@@ -1,1 +1,11 @@
-# projectEuler
+# [Project Euler](https://projecteuler.net/archives)
+- [x] Problem #1 (C). Multiples of 3 and 5.
+- [x] Problem #2 (C). Even Fibonacci Numbers.
+- [x] Problem #3 (C). Largest Prime Factor.
+- [x] Problem #4 (C). Largest Palindrome Product.
+- [x] Problem #5 (C). Smallest Multiple.
+- [x] Problem #6 (C). Sum Square Difference
+- [x] Problem #7 (C). 10001st Prime.
+- [x] Problem #8 (C). Largest Product in a Series.
+- [x] Problem #9 (C). Special Pythagorean Triplet.
+- [x] Problem #10 (C). Summation of Primes.
