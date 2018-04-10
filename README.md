@@ -9,4 +9,4 @@
 - [x] Problem #8 (C). Largest Product in a Series.
 - [x] Problem #9 (C). Special Pythagorean Triplet.
 - [x] Problem #10 (C). Summation of Primes.
-- [] Problem #11 (C). Largest Product in Grid
+- [ ] Problem #11 (C). Largest Product in Grid
