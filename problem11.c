@@ -1,10 +1,12 @@
 //The product of these numbers is 26 × 63 × 78 × 14 = 1788696.
 //What is the greatest product of four adjacent numbers in the same direction(up, down, left, right, or diagonally) in the 20×20 grid ?
 
+
+//COMPLETE
 #include <stdio.h>
 #define ROWSIZE 20
 #define COLSIZE 20
-#define READINGFRAME 5;
+#define READINGFRAME 4;
 
 int numMatrix[20][20] = {
 	{8, 02, 22, 97, 38, 15, 0, 40, 0, 75, 4, 5, 7, 78, 52, 12, 50, 77, 91, 8},
@@ -30,12 +32,22 @@ int numMatrix[20][20] = {
 };
 
 unsigned long long int checkProduct(unsigned long long int currLarge, unsigned long long int intToCheck);
-unsigned long long int horizontalProduct(const int* matrix[], int rowIndex, int colIndex);
+unsigned long long int largestHorizontalProduct(const int matrix[20][20], unsigned long long int currLargest);
+unsigned long long int rowCheck(const int matrix[20][20], int rowIndex, int colIndex);
+unsigned long long int largestVerticalProduct(const int matrix[20][20], unsigned long long int currLargest);
+unsigned long long int colCheck(const int matrix[20][20], int rowIndex, int colIndex);
+unsigned long long int largestDiagonalProduct(const int matrix[20][20], unsigned long long int currLargest);
+unsigned long long int diagForwardCheck(const int matrix[20][20],int rowIndex,int colIndex);
+unsigned long long int diagBackwardCheck(const int matrix[20][20],int rowIndex,int colIndex);
 
 int main(){
 
 	unsigned long long int largestProduct = 0;
+	largestProduct = largestHorizontalProduct(numMatrix, largestProduct);
+	largestProduct = largestVerticalProduct(numMatrix, largestProduct);
+	largestProduct = largestDiagonalProduct(numMatrix, largestProduct);
 
+	printf("The greatest product of four adjacent numbers in the same direction is %llu\n", largestProduct);
 	return 0;
 }
 
@@ -45,12 +57,123 @@ unsigned long long int checkProduct(unsigned long long int currLarge, unsigned l
 	return currLarge > intToCheck ? currLarge : intToCheck;
 }
 
-unsigned long long int horizontalProduct(const int* matrix[], int rowIndex, int colIndex)
+unsigned long long int rowCheck(const int matrix[20][20], int rowIndex, int colIndex)
 {
 	unsigned long long int product = matrix[rowIndex][colIndex];
-	int stoppingPoint = COLSIZE - READINGFRAME;
+	int stoppingPoint = colIndex + READINGFRAME;
+
 	for (int i = colIndex+1; i < stoppingPoint; i++) {
 		product *= matrix[rowIndex][i];
 	}
 	return product;
+}
+
+unsigned long long int largestHorizontalProduct(const int matrix[20][20], unsigned long long int currLargest)
+{
+	unsigned long long int largest = currLargest; 
+	int rowIndex = 0;
+	int colIndex = 0;
+	int finalColIndex = COLSIZE - READINGFRAME;
+
+	while(rowIndex < ROWSIZE){
+		while(colIndex < finalColIndex)
+		{
+			largest = checkProduct(largest, rowCheck(matrix, rowIndex, colIndex));
+			colIndex++;
+		};
+		colIndex = 0;
+		rowIndex++;
+	};
+	return largest;
+};
+
+unsigned long long int colCheck(const int matrix[20][20], int rowIndex, int colIndex)
+{
+	unsigned long long int product = matrix[rowIndex][colIndex];
+	int stoppingPoint = rowIndex + READINGFRAME;
+
+	for (int i = rowIndex+1; i < stoppingPoint; i++) {
+		product *= matrix[i][colIndex];
+	}
+	return product;
+}
+
+unsigned long long int largestVerticalProduct(const int matrix[20][20], unsigned long long int currLargest)
+{
+	unsigned long long int largest = currLargest; 
+	int rowIndex = 0;
+	int colIndex = 0;
+	int finalRowIndex = ROWSIZE - READINGFRAME;
+	while(colIndex < COLSIZE)
+	{
+		while(rowIndex < finalRowIndex)
+		{
+			largest = checkProduct(largest, colCheck(matrix, rowIndex, colIndex));
+			rowIndex++;
+		};
+		rowIndex = 0;
+		colIndex++;
+	};
+	return largest;
+}
+
+unsigned long long int diagForwardCheck(const int matrix[20][20],int rowIndex,int colIndex)
+{
+	unsigned long long int product = matrix[rowIndex][colIndex];
+	int count =1;
+	while(count < 4)
+	{
+		product *= matrix[rowIndex+count][colIndex+count];
+		count++;
+	};
+	return product;
+}
+
+unsigned long long int diagBackwardCheck(const int matrix[20][20],int rowIndex,int colIndex)
+{
+	unsigned long long int product = matrix[rowIndex][colIndex];
+	int count =1;
+	while(count < 4)
+	{
+		product *= matrix[rowIndex+count][colIndex-count];
+		count++;
+	};
+	return product;
+}
+
+
+
+unsigned long long int largestDiagonalProduct(const int matrix[20][20], unsigned long long int currLargest)
+{
+	unsigned long long int largest = currLargest; 
+	int rowIndex = 0;
+	int colIndex = 0;
+	int finalRowIndex = ROWSIZE - READINGFRAME;
+	int finalColIndex = COLSIZE - READINGFRAME;
+	while(rowIndex < finalRowIndex)
+	{
+		while(colIndex < finalColIndex)
+		{
+			largest = checkProduct(largest, diagForwardCheck(matrix, rowIndex, colIndex));
+			colIndex++;
+		}
+		colIndex = 0;
+		rowIndex++;
+	}
+
+	rowIndex = 0;
+	colIndex = COLSIZE -1;
+
+	while(rowIndex < finalRowIndex)
+	{
+		while(colIndex >= 4)
+		{
+			largest = checkProduct(largest, diagBackwardCheck(matrix, rowIndex, colIndex));
+			colIndex--;
+		}
+		colIndex = COLSIZE -1;
+		rowIndex++;
+	}
+
+	return largest;
 }
