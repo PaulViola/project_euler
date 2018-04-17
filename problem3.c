@@ -6,6 +6,8 @@
 #include <stdio.h>
 #include <math.h>
 #include <stdbool.h>
+#include <stdlib.h>
+#include <string.h>
 #define TARGETNUM 600851475143
 
 int largestFactor(bool* boolArr, int maxLimit);
@@ -13,7 +15,7 @@ int largestFactor(bool* boolArr, int maxLimit);
 int main() {
 	int maxLimit = (int) sqrt(TARGETNUM);
 
-	bool* boolArr = malloc(maxLimit * sizeof *boolArr);
+	bool* boolArr = (bool*) malloc(maxLimit * sizeof *boolArr);
 
 	for (int i = 0; i < maxLimit + 1; boolArr[i++] = true);
 
