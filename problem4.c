@@ -3,6 +3,7 @@
 
 //COMPLETE
 #include <stdio.h>
+#include <cstring>
 #include <stdbool.h>
 #define MAXARRSIZE 7
 

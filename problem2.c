@@ -20,6 +20,5 @@ int main(void) {
 			sum += current;
 	};
 	printf("%i\n",sum);
-	system("PAUSE");
 	return 0;
 }
