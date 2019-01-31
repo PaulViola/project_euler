@@ -10,4 +10,5 @@
 - [x] Problem #9 (C). Special Pythagorean Triplet.
 - [x] Problem #10 (C). Summation of Primes.
 - [x] Problem #11 (C). Largest Product in Grid.
-- [ ] Problem #12 (C). Highly divisible triangular number.
+- [x] Problem #12 (Python). Highly divisible triangular number.
+- [ ] Problem #13 (Python). Large sum.
