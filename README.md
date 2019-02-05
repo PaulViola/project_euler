@@ -11,4 +11,5 @@
 - [x] Problem #10 (C). Summation of Primes.
 - [x] Problem #11 (C). Largest Product in Grid.
 - [x] Problem #12 (Python). Highly divisible triangular number.
-- [ ] Problem #13 (Python). Large sum.
+- [x] Problem #13 (Python). Large sum.
+- [ ] Problem #14 (Python). Longest Collatz sequence
