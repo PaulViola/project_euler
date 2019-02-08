@@ -13,4 +13,5 @@
 - [x] Problem #12 (Python). Highly divisible triangular number.
 - [x] Problem #13 (Python). Large sum.
 - [X] Problem #14 (Python). Longest Collatz sequence
-- [ ] Problem #15 (Python). Lattice paths
+- [X] Problem #15 (Python). Lattice paths
+- [ ] Problem #16 (Python). Power digit sum
