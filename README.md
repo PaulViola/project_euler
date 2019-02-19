@@ -15,4 +15,8 @@
 - [X] Problem #14 (Python). Longest Collatz sequence
 - [X] Problem #15 (Python). Lattice paths
 - [X] Problem #16 (Python). Power digit sum
+<<<<<<< HEAD
 - [ ] Problem #17 (Python). Number letter counts
+=======
+- [ ] Problem #17 (Python). Number letter counts
+>>>>>>> 5cc02f0c11dd744c66054e68d79ffa31cbd47543

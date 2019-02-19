@@ -9,6 +9,7 @@
 
 # Which starting number, under one million, produces the longest chain?
 
+# completed
 upper_limit = 1000000
 
 def collatz_sequence_count(num, count):
