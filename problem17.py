@@ -4,6 +4,8 @@
 
 from math import floor
 
+# when given a ones value, returns the number of letters in the val
+# for example get_ones_val(5) returns 4 one for each letter in the word five
 def get_ones_val(number):
     switcher = {
         9: 4,
@@ -19,6 +21,8 @@ def get_ones_val(number):
     }
     return switcher.get(number, "Not Found")
 
+# when given a special tens value (10-19), returns the number of letters in the val
+# for example get_special_ones_and_tens(15) returns 7 one for each letter in the word fifteen
 def get_special_ones_and_tens(number):
     switcher = {
         10: 3,
@@ -34,6 +38,8 @@ def get_special_ones_and_tens(number):
     }
     return switcher.get(number, "Not Found")
 
+# when given a tens value above 19, returns the number of letters in the val
+# for example get_tens_above_nineteen(30) returns 6 one for each letter in the word thirteen
 def get_tens_above_nineteen(number):
     switcher = {
         20: 6,
@@ -47,6 +53,8 @@ def get_tens_above_nineteen(number):
     }
     return switcher.get(number, "Not Found")
 
+# when given a hundreds value, returns the number of letters in the val
+# for example get_hundreds(200) returns 9 one for each letter in the words two hundred
 def get_hundreds(number):
     hundred = 7
     number_of_hundreds = floor(number/100)
@@ -87,7 +95,7 @@ def sum_for_num(number):
         return sum_for_hundreds(number)
     elif number > 9:
         return sum_for_tens(number)
-    elif number < 9:
+    elif number <= 9:
         return get_ones_val(number)
     return 0
 
@@ -96,5 +104,5 @@ def find_number_letter_counts(start, stop):
     for i in range(start, stop+1):
         sum += sum_for_num(i)
     return sum
-
-print(find_number_letter_counts(1, 1000))
+one_to_one_thousand_letter_count = find_number_letter_counts(1, 1000)
+print(one_to_one_thousand_letter_count)
